@@ -45,8 +45,8 @@ while choice.lower() == "y":
     # car_brand = funclib.F_exit("Enter Vehicle Brand (ie: Toyota): ")
     # car_model = funclib.F_exit("Enter Vehicle Model (ie: Corolla): ")
     # car_lic_plate = funclib.F_exitCondi_1("Enter Vehicle Licence Plate (XXX999): ", 6)
-    # inputClsalesPrice = funclib.F_exitCondi_2("Enter Vehicle Selling Price: ", 0, 50000)
-    # inputCltradeAllw = funclib.F_exitCondi_2("Enter Vehicle Trade Allowance: ", 0, inputClsalesPrice)
+    inputClsalesPrice = funclib.F_exitCondi_2("Enter Vehicle Selling Price: ", 0, 50000)
+    inputCltradeAllw = funclib.F_exitCondi_2("Enter Vehicle Trade Allowance: ", 0, inputClsalesPrice)
     # salesPerName =  funclib.F_exit("Enter Salespersons Name: ")
     
     salesPrice = funclib.FDollar2(inputClsalesPrice)
