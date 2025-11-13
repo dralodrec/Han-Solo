@@ -28,6 +28,16 @@ const com2Format = new Intl.NumberFormat("en-CA", {
   maximumFractionDigits: "2",
 });
 
+// function for capitalize first letter of each word. reference www.w3resource.com
+function capital_letter(str) {
+    str = str.split(" ");
+    for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+    return str.join(" ");
+}
+ 
+
 
 // Define program constants.
 const BORDER_ = 0.28;
@@ -35,23 +45,22 @@ const MOWING_ = 0.04;
 const FERTI_ = 0.03;
 
 const HST_RATE = 0.15;
-const ENVI_RATE = 0.14;
+const ENVI_RATE = 0.014;
 
 
 // Start main program here.
 
-// Gather user input.
-let CustName = prompt("Enter Customer Name: ");
-let StAdd = prompt("Enter Street Address: ");
-let City = prompt("Enter City: ");
-let phone = prompt("Enter Phone Number: ");
+// Gather user input. add default value to the 
+let inputName = prompt("Enter Customer Name: ", "john wakeham smith");
+let inputStAdd = prompt("Enter Street Address: ", "36 bread and cheese road");
+let inputCity = prompt("Enter City: ", "bay bulls");
+let phone = prompt("Enter Phone Number: ", "XXX-XXX-XXXX");
 let propertySize = parseFloat(prompt("Enter property size (sqft): ", 4561));
 
-// let CustName = "John Smith";
-// let StAdd = "123 Water St.";
-// let City = "St. John's";
-// let phone = "709-788-7654";
-// let propertySize = 4561;
+let CustName = capital_letter(inputName)
+let StAdd = capital_letter(inputStAdd)
+let City = capital_letter(inputCity)
+
 
 // Generate program results.
 let borderCost = 0.04 * propertySize * BORDER_
@@ -61,7 +70,7 @@ let fertilizerCost = propertySize * FERTI_
 let totalCharges = borderCost + mowingCost + fertilizerCost
 
 let HST = totalCharges * HST_RATE;
-let enviTax = totalCharges + ENVI_RATE;
+let enviTax = totalCharges * ENVI_RATE;
 
 let invoiceTotal = totalCharges + HST + enviTax;
 
