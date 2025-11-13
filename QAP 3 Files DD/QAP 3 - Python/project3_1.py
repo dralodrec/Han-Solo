@@ -40,13 +40,14 @@ while choice.lower() == "y":
 
    
     # clientName =  funclib.F_exit("Enter Customer Name: ")
-    # clientHomePhone = funclib.F_exitCondi("Enter Phone Number (9999999999): ", 10)
-    # car_yr = funclib.F_exitCondi("Enter Vehicle Year: ", 4)
-    # car_brand = funclib.F_exit("Enter Vehicle Brand: ")
-    # car_model = funclib.F_exit("Enter Vehicle Model: ")
-    # car_lic_plate = funclib.F_exitCondi("Enter Vehicle Licence Plate (XXX999): ", 6)
-    # inputClsalesPrice = funclib.F_int("Enter Vehicle Selling Price: ")
-    # inputCltradeAllw = funclib.F_int("Enter Vehicle Trade Allowance: ")
+    # clientHomePhone = funclib.F_exitCondi_1("Enter Phone Number (9999999999): ", 10)
+    # car_yr = funclib.F_exitCondi_1("Enter Vehicle Year (ie: 2018): ", 4)
+    # car_brand = funclib.F_exit("Enter Vehicle Brand (ie: Toyota): ")
+    # car_model = funclib.F_exit("Enter Vehicle Model (ie: Corolla): ")
+    # car_lic_plate = funclib.F_exitCondi_1("Enter Vehicle Licence Plate (XXX999): ", 6)
+    # inputClsalesPrice = funclib.F_exitCondi_2("Enter Vehicle Selling Price: ", 0, 50000)
+    # inputCltradeAllw = funclib.F_exitCondi_2("Enter Vehicle Trade Allowance: ", 0, inputClsalesPrice)
+    # salesPerName =  funclib.F_exit("Enter Salespersons Name: ")
     
     salesPrice = funclib.FDollar2(inputClsalesPrice)
     tradeAllowance = funclib.FDollar2(inputCltradeAllw)
