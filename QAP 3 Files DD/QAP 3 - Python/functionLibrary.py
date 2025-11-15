@@ -83,7 +83,7 @@ def F_exit(prompt):
             return user_input
 
 # Function will validate conditional entry with exit 
-def F_exitCondi_1(prompt, condition):
+def F_exitCondi_1(prompt, characterLenght):
     while True:
         user_input = input(prompt)
         if (user_input != "END"):
@@ -94,7 +94,7 @@ def F_exitCondi_1(prompt, condition):
             else:
                 if (user_input == 0):
                     print(f"Incorrect Entry")
-                elif (len(str(user_input)) <= condition or len(str(user_input)) > condition ):
+                elif (len(str(user_input)) <= characterLenght or len(str(user_input)) > characterLenght ):
                     print(f"Please enter correct format")
                 else:
                     return user_input
