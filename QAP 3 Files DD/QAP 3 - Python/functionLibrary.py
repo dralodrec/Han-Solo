@@ -40,29 +40,27 @@ def FComma2(Value):
     return ValueStr
 
 # Function will format receipt to uniqueID.
-def Freceipt(value1, value2, value3):
-    # get the initials from value1 (string)
-    letters = []
-    for words in value1.split():
-        letters.append(words[0:1])
-    value1 = letters[0].upper() + letters[1].upper()
-    # get the 3 middle characters of value2 (string)
-    value2 = value2[2:5]
-    # get the last 4 characters of value3 (string)
-    value3 = value3[-4:]
-    newValue = value1 + "-" + value2 + "-" + value3
+def Freceipt(value1, value2, value3, value4):
+    # get the initials from value1
+    value1 = value1[0].upper()
+    
+    # get the initials from value2
+    value2 = value2[0].upper()
+
+    # get the 3 middle characters of value3
+    value3 = value3[2:5].upper()
+
+    # get the last 4 characters of value4 
+    value4 = value4[-4:]
+
+    newValue = value1 + value2 + "-" + value3 + "-" + value4
     return newValue
 
 # Function will format client name first initial and last names will all be capitalized.
-def Fname(value):
-    clnames = []
-    for words in value.split():
-            clnames.append(words)
-    fInital = clnames[0][0]
-    lNAmes = " ".join(clnames[1:])
-    fullName = fInital + ". " + lNAmes
-    fullName = fullName.title()
-    return fullName
+def Fname(value1, value2):
+    value1 = value1[0].upper()
+    newValue = value1 + ". " + value2.title()
+    return newValue
 
 # Function will format phone number display (XXX) XXX-XXXX
 def Fphone(value):
@@ -72,6 +70,21 @@ def Fphone(value):
     value = "(" + countryCode  + ") " + areaCode + "-" + localNum
     return value
 
+# Function will validate licence plate entry
+def F_licPlate(prompt):
+    while True:
+        user_input = input(prompt)
+        charac_3_alpha = user_input[0:3]
+        charac_3_digit = user_input[3:6]
+        if user_input == 0 or user_input == "":
+            print("Incorrect Entry")
+        elif len(str(user_input)) < 6 or len(str(user_input)) > 6:
+            print("Please enter correct format")
+        elif  charac_3_alpha.isalpha() == False or charac_3_digit.isdigit() == False:
+            print("Please enter correct format")
+        else:
+            return user_input
+
 # Function will validate entry to exit
 def F_exit(prompt):
     while True:
@@ -79,46 +92,54 @@ def F_exit(prompt):
         if user_input == "END" :
             print("\nGood Bye!\n\n")
             os._exit(0)
+        elif user_input == 0 or user_input == " " or user_input == "":
+            print("Incorrect Entry")
+        elif user_input.isdigit() == True:
+            print("Entry cannot be a number")
+        else:
+            return user_input
+
+# Function will validate entry 
+def F_validate(prompt):
+    while True:
+        user_input = input(prompt)
+        if user_input == 0 or user_input == " " or user_input == "":
+            print("Incorrect Entry")
+        elif user_input.isdigit() == True:
+            print("Entry cannot be a number")
         else:
             return user_input
 
 # Function will validate conditional entry with exit 
-def F_exitCondi_1(prompt, characterLenght):
+def F_phone_val(prompt, characterLenght):
     while True:
         user_input = input(prompt)
-        if (user_input != "END"):
-            try:
-                user_input = int(user_input)
-            except:
-                print(f"Entry must be greater than zero or an integer")
-            else:
-                if (user_input == 0):
-                    print(f"Incorrect Entry")
-                elif (len(str(user_input)) <= characterLenght or len(str(user_input)) > characterLenght ):
-                    print(f"Please enter correct format")
-                else:
-                    return user_input
+        try:
+            user_input = int(user_input)
+        except:
+            print(f"Entry must be greater than zero or an integer")
         else:
-            print("\nGood Bye!\n\n")
-            os._exit(0)
+            if (user_input == 0 or user_input == ""):
+                print(f"Incorrect Entry")
+            elif (len(str(user_input)) <= characterLenght or len(str(user_input)) > characterLenght ):
+                print(f"Please enter correct format")
+            else:
+                return user_input
 
 # Function will validate conditional entry with exit 
 def F_exitCondi_2(prompt, lowValue, highValue):
     while True:
         user_input = input(prompt)
-        if (user_input != "END"):
-            try:
-                user_input = int(user_input)
-            except:
-                print(f"Entry must be greater than {lowValue} or an integer")
-            else:
-                if (user_input <= lowValue or user_input > highValue):
-                    print(f"Entry must be greater than {lowValue} or less than {highValue}")
-                else:
-                    return user_input
+        try:
+            user_input = int(user_input)
+        except:
+            print(f"Entry must be greater than {lowValue} or an integer")
         else:
-            print("\nGood Bye!\n\n")
-            os._exit(0)
+            if (user_input <= lowValue or user_input > highValue):
+                print(f"Entry must be greater than {lowValue} or less than {highValue}")
+            else:
+                return user_input
+
 
 # Function will calculate the payment schedule
 def Fcalcu(Years, Finance_Fee_Rate, totalSalesPrice):

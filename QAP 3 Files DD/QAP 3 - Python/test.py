@@ -1,19 +1,25 @@
-def F_exitCondi(prompt, count):
-    while True:
-        user_input = input(prompt)
-        if (user_input != "END"):
-            try:
-                user_input = int(user_input)
-            except:
-                print(f"Entry must be greater than zero or an integer")
-            else:
-                if (user_input == 0):
-                    print(f"Incorrect Entry")
-                elif (len(str(user_input)) < count or len(str(user_input)) > count ):
-                    print(f"Please enter correct format")
-                else:
-                    print(user_input)
-        else:
-            print("\nGood Bye!\n\n")
+def Freceipt(value1, value2="", value3=""):
+    # get the initials from value1 (string)
+    letters = []
+    for words in value1.split():
+        letters.append(words[0:1])
+    
+    # get the first 2 characters of value1 (string)
+    if len(letters) >= 2:
+        value1 = letters[0].upper() + letters[1].upper()
+    else:
+        value1 = letters[0].upper()
 
-F_exitCondi("enter: ", 10)          
+    # get the 3 middle characters of value2 (string)
+    value2 = value2[2:5].upper()
+
+    # get the last 4 characters of value3 (string)
+    value3 = value3[-4:]
+
+    if value2 == "" and value3 == "":
+        newValue = value1
+    else:
+        newValue = value1 + "-" + value2 + "-" + value3
+    print(newValue)
+
+Freceipt("john smith")

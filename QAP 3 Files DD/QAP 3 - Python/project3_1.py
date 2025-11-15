@@ -25,13 +25,10 @@ FINANCE_FEE_RATE = 39.99
 choice = "y"
 while choice.lower() == "y":
 
-    clientName = "ricky bowen smith"                      
-    clientAddrss = "1078 Bauline Line Extension"    
-    clientCity = "Bauline"                          
-    clientProv = "nl"                               
-    clientPostal = "a1k 0k7"                       
+    clientFirstName = "john"
+    clientLastName  = "smith"                                        
     clientHomePhone = "7097844866"
-    car_lic_plate = "JVM372"
+    car_lic_plate = "jmh372"
     car_yr = "2022"
     car_brand = "toyota"
     car_model = "tundra"
@@ -39,24 +36,26 @@ while choice.lower() == "y":
     inputCltradeAllw = 4500
 
    
-    # clientName =  funclib.F_exit("Enter Customer Name (END to quit): ")
-    # clientHomePhone = funclib.F_exitCondi_1("Enter Phone Number (9999999999): ", 10)
-    # car_yr = funclib.F_exitCondi_1("Enter Vehicle Year (ie: 2018): ", 4)
+    # clientFirstName =  funclib.F_exit("Enter Customer First Name (END to quit): ")
+    # clientLastName =  funclib.F_exit("Enter Customer Last Name (END to quit): ")
+    # clientHomePhone = funclib.F_phone_val("Enter Phone Number (9999999999): ", 10)
+    # car_lic_plate = funclib.F_licPlate("Enter Vehicle Licence Plate (XXX999): ", 6)
     # car_brand = input("Enter Vehicle Brand (ie: Toyota): ")
     # car_model = input("Enter Vehicle Model (ie: Corolla): ")
-    car_lic_plate = funclib.F_exitCondi_1("Enter Vehicle Licence Plate (XXX999): ", 6)
+    # car_yr = input("Enter Vehicle Year (ie: 2018): ")
     # inputClsalesPrice = funclib.F_exitCondi_2("Enter Vehicle Selling Price: ", 0, 50000)
     # inputCltradeAllw = funclib.F_exitCondi_2("Enter Vehicle Trade Allowance: ", 0, inputClsalesPrice)
-    # salesPerName =  input("Enter Salespersons Name: ")
+    # salesPerName =  funclib.F_validate("Enter Salespersons Name: ")
     
+
     salesPrice = funclib.FDollar2(inputClsalesPrice)
     tradeAllowance = funclib.FDollar2(inputCltradeAllw)
     inputDate = datetime.datetime.now()
     inputDate2 = funclib.modDate(inputDate)
     fpaymentDate = funclib.FDate_ddMonyy(inputDate2)
     invoiceDate = funclib.FDate_Monddyyyy(inputDate)
-    receipt_no = funclib.Freceipt(clientName,car_lic_plate,clientHomePhone)
-    sold_to = funclib.Fname(clientName)
+    receipt_no = funclib.Freceipt(clientFirstName,clientLastName,car_lic_plate,clientHomePhone)
+    sold_to = funclib.Fname(clientFirstName,clientLastName)
     clientHomePhone = funclib.Fphone(clientHomePhone)
 
     car_details = car_yr + " " + car_brand + " " + car_model
